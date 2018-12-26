@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<title>Royale | Two Column 1</title>
+  <style>
+    input{
+      border-radius: 3px;
+      background-image:-moz-linear-gradient(top, #cfcfbf, #fffed7);
+    }
+  </style>
+<meta charset="utf-8">
+<noscript>
+<link rel="stylesheet" href="css/5grid/core.css">
+<link rel="stylesheet" href="css/5grid/core-desktop.css">
+<link rel="stylesheet" href="css/5grid/core-1200px.css">
+<link rel="stylesheet" href="css/5grid/core-noscript.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+</noscript>
+<script src="css/5grid/jquery.js"></script>
+<script src="css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css"><![endif]-->
+</head>
+<body class="two-column">
+<div id="header-wrapper">
+  <header id="header" class="5grid-layout">
+    <div class="row">
+      <div class="12u">
+        <!-- Logo -->
+        <h1><a href="#" class="mobileUI-site-name">Royale</a></h1>
+        <p></p>
+        <!-- Nav -->
+        <nav class="mobileUI-site-nav"> <a href="/">Homepage</a> <a href="/doublebed">Doublebed</a> <a href="/twodoublebeds" class="active">Two doublebeds</a> <a href="/tvcitchen">Citchen+TV</a> <a href="/doublebedtv">Doublebed+TV</a> <a href="/personalpage">Кабинет</a></nav>
+      </div>
+    </div>
+  </header>
+</div>
+<div id="wrapper">
+  <div class="5grid-layout">
+    <div id="page">
+      <div class="row">
+        <div class="12u">
+          <div class="row">
+            <div class="8u">
+              <section id="content">
+                <h2>Two doublebeds</h2>
+                <p class="subtitle">Комфортабельный номер с двухспальной кроватью c двумя двухспальными кроватями</p>
+                <div class="alignleft">
+                  <div class="image-style1"><a href="#"><img src="images/129184373.jpg" width="262" height="180" alt=""></a></div>
+                  <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                </div>
+                <p>Забронировать</p>
+                <p>&nbsp;</p>
+                <style>
+                  #calendar2 {
+                    width: 100%;
+                    font: monospace;
+                    line-height: 1.2em;
+                    font-size: 15px;
+                    text-align: center;
+                  }
+                  #calendar2 thead tr:last-child {
+                    font-size: small;
+                    color: rgb(85, 85, 85);
+                  }
+                  #calendar2 thead tr:nth-child(1) td:nth-child(2) {
+                    color: rgb(50, 50, 50);
+                  }
+                  #calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
+                    cursor: pointer;
+                  }
+                  #calendar2 tbody td {
+                    color: rgb(44, 86, 122);
+                  }
+                  #calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+                    color: rgb(231, 140, 92);
+                  }
+                  #calendar2 tbody td.today {
+                    background: rgb(220, 0, 0);
+                    color: #fff;
+                  }
+                </style>
+
+                <table id="calendar2">
+                  <thead>
+                  <tr><td>‹<td colspan="5"><td>›
+                  <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                  <tbody>
+                </table>
+
+                <script>
+                    function Calendar2(id, year, month) {
+                        var Dlast = new Date(year,month+1,0).getDate(),
+                            D = new Date(year,month,Dlast),
+                            DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+                            DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+                            calendar = '<tr>',
+                            month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+                        if (DNfirst != 0) {
+                            for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+                        }else{
+                            for(var  i = 0; i < 6; i++) calendar += '<td>';
+                        }
+                        for(var  i = 1; i <= Dlast; i++) {
+                            if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+                                calendar += '<td class="today">' + i;
+                            }else{
+                                calendar += '<td>' + i;
+                            }
+                            if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+                                calendar += '<tr>';
+                            }
+                        }
+                        for(var  i = DNlast; i < 7; i++) calendar += '<td>&nbsp;';
+                        document.querySelector('#'+id+' tbody').innerHTML = calendar;
+                        document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+                        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+                        document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+                        if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+                            document.querySelector('#'+id+' tbody').innerHTML += '<tr><td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;<td>&nbsp;';
+                        }
+                    }
+                    Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
+                    // переключатель минус месяц
+                    document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+                        Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)-1);
+                    }
+                    // переключатель плюс месяц
+                    document.querySelector('#calendar2 thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+                    Calendar2("calendar2", document.querySelector('#calendar2 thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar2 thead td:nth-child(2)').dataset.month)+1);
+                    }
+                </script>
+
+                <p>Ввод в формате yyyy-mm-dd</p>
+                <form method="post" action="/twodoublebeds" >
+                  <input type="date" name="checkin" placeholder="Введите дату заселения">
+                  <input type="date" name="checkout" placeholder="Введите дату выселения">
+                  <button type="submit">Забронировать</button>
+                </form>
+                <p>&nbsp;</p>
+                <h1 th:text="${mess}">Hello!</h1>
+                <p>Дополнительные сведения о заказе вы можете узнать в личном кабинете, оттуда же производится отмена заказа</p>
+                <p>&nbsp;</p>
+              </section>
+            </div>
+            <div class="4u">
+              <section id="sidebar">
+                <p class="subtitle">Все номера оснащены кондиционером</p>
+                <p>Номер для людей, которые отдыхают большими компаниями и не тратят время на самостоятельное приготовление пищи:</p>
+                <ul class="list-style1">
+                  <li>2 Двуспальные кровати</li>
+                  <li>Микроволновка</li>
+                  <li>Холодильник</li>
+                  <li>Душ</li>
+                  <li>Туалет</li>
+                  <li>Wi-Fi</li>
+                  <li>Раскладной диван</li>
+
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="5grid-layout">
+  <div id="copyright">
+    <section>
+      <p>&copy; Royale inn: <a target="_blank" href="https://vk.com/glytovphotography">nikitaglytovphoro</a> | Design: <a target="_blank" href="https://vk.com/rockstar2007">AndruwaRyliakou</a></p>
+    </section>
+  </div>
+</div>
+</body>
+</html>

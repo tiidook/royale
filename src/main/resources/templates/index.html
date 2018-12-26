@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Royale</title>
+    <style type="text/css">
+
+
+        .review {
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            user-select: none;
+            padding: .5em 2em;
+            outline: none;
+            border: 2px solid;
+            border-radius: 1px;
+            transition: 0.2s;
+        }
+        .review :hover { background: rgb(255, 254, 114); }
+        .review :active { background: brown; }
+
+        textarea {
+            box-sizing : border-box;
+            font: .9em/1.5em "Lucida Sans", sans-serif;
+            padding: 10px 30px 10px 30px;
+            width: 90%;
+            height: 100%;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12pt;
+            text-shadow: -1px -1px 0 rgba(255, 255, 239, 0.5);
+        }
+
+        table {
+            word-wrap : break-word;
+            width: 100%; /* Ширина таблицы */
+            height: 200%;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            border-collapse: collapse;
+            color: #686461;
+        }
+
+        caption {
+            padding: 10px;
+            color: white;
+            background: #8FD4C1;
+            font-size: 18px;
+            text-align: left;
+            font-weight: bold;
+        }
+        th {
+            width: 100%;
+            word-wrap : break-word;
+            border-bottom: 3px solid #B9B29F;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            width: 0%;
+            word-wrap : break-word;
+            padding: 10px;
+        }
+        tr:nth-child(odd) {
+            width: 100%;
+            word-wrap : break-word;
+            background: white;
+        }
+        tr:nth-child(even) {
+            width: 100%;
+            word-wrap : break-word;
+            background: #E8E6D1;
+        }
+
+
+    </style>
+    <meta charset="utf-8">
+    <noscript>
+        <link rel="stylesheet" href="css/5grid/core.css">
+        <link rel="stylesheet" href="css/5grid/core-desktop.css">
+        <link rel="stylesheet" href="css/5grid/core-1200px.css">
+        <link rel="stylesheet" href="css/5grid/core-noscript.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style-desktop.css">
+    </noscript>
+    <script src="css/5grid/jquery.js"></script>
+    <script src="css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+    <!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css"><![endif]-->
+</head>
+<body>
+<div id="header-wrapper">
+    <header id="header" class="5grid-layout">
+        <div class="row">
+            <div class="12u">
+                <!-- Logo -->
+
+                <h1 style="color:#ffffef" class="mobileUI-site-name" th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+                <p><h1 th:text="${hello}">Здравствуйте!</h1></p>
+                <!-- Nav -->
+                <nav class="mobileUI-site-nav"> <a href="/" class="active">Домашняя страница</a> <a href="/personalpage">Личный кабинет</a>
+                    <a href="/exit"/>Выход</a></nav>
+
+            </div>
+
+        </div>
+        
+    </header>
+</div>
+<div id="wrapper">
+
+    <div class="5grid-layout">
+        <div class="row">
+            <div class="12u" id="banner">
+                <section><a href="#"><img src="images/fon.png" alt=""></a></section>
+            </div>
+        </div>
+
+        <div id="feature-content">
+        <section>
+            <h2>Наши номера</h2>
+        </section>
+        <div class="row">
+            <div class="12u">
+                <div class="row">
+                    <div class="3u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="/doublebed"><img src="images/129184323.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                            <p>Комфортабельный номер с одной двухместной кроватью.</p>
+                            <p class="button"><a href="/doublebed">Подробнее</a></p>
+                        </section>
+                    </div>
+                    <div class="3u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="/doublebedtv"><img src="images/129184326.jpg" alt=""></a></div>
+                                <div><a href="/doublebedtv"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                            <p>Номер с одной двухместной кроватью, а также телевизором.</p>
+                            <p class="button"><a href="/doublebedtv">Подробнее</a></p>
+                        </section>
+                    </div>
+                    <div class="3u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="/twodoublebeds"><img src="images/129184373.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                            <p>Номер с двумя двухместными кроватями и телевизором</p>
+                            <p class="button"><a href="/twodoublebeds">Подробнее</a></p>
+                        </section>
+                    </div>
+                    <div class="3u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="/tvcitchen"><img src="images/129184376.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                            <p>Номер с двумя двухместными кроватями, телевизором и кухней.</p>
+                            <p class="button"><a href="/tvcitchen">Подробнее</a></p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="feature-content">
+            <section>
+                <h2>В стоимость номера включены:</h2>
+            </section>
+            <div class="row">
+                <div class="12u">
+                    <div class="row">
+                        <div class="3u">
+                            <section>
+                                <div>
+                                    <div class="image-style5"><img src="images/icon-1294830_960_720.png" width="100" height="100" alt=""></div>
+
+                                </div>
+                                <p>Душ</p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <div>
+                                    <div class="image-style5"><img src="images/swimmingpool_86221.png" width="100" height="100" alt=""></div>
+
+                                </div>
+                                <p>Бассейн</p>
+
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <div>
+                                    <div class="image-style5"><img src="images/diningroom_5179.png" width="100" height="100" alt=""></div>
+
+                                </div>
+                                <p>Столовая</p>
+
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <div>
+                                    <div class="image-style5"><img src="images/260369.png" width="100" height="100" alt=""></div>
+
+                                </div>
+                                <p>Wi-Fi</p>
+
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page1">
+            <div class="row">
+                <div class="12u">
+                    <section id="content">
+                        <h2>Город и достопримечательности</h2>
+                        <p class="subtitle">Ocean City, город в штате Marylad на берегу Атлантического океана</p>
+                        <div class="alignleft">
+                            <div class="image-style2"><img src="images/ocean-city-maryland.jpg "width="280" height="220" alt=""></div>
+                            <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            <div class="image-style2"><img src="images/ocmd_boardwalk_new_getty_photo_abriggs21.jpg "width="280" height="220" alt=""></div>
+                            <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                        </div>
+                        <p>В 1933 году во время значительного урагана был образован озерный городок, который также разрушил железнодорожные пути через залив Синепуксент. Ввод отделял то, что сейчас является Океан-Сити от острова Ассатег. Инженерный корпус армии воспользовался вмешательством природы и сделал вход в южном конце Оушен-Сити постоянным. В конечном счете, впускной пункт помог установить Океан-Сити в качестве важного среднеатлантического рыболовного порта, поскольку он обеспечивал легкий доступ к рыболовным угодьям Атлантического океана.
+
+                            В конце 1930-х годов Инженерный корпус армии выровнял новый канал на берегу Оушен-Сити, чтобы позволить более крупным лодкам иметь доступ к заливу Синепуксент. Земснаряд был закачан обратно на западный берег Оушен-Сити, что позволило создать Чикагскую авеню и Сент-Луис-авеню, что привело к новой разработке, где раньше были только болота.</p>
+                        <p>&nbsp;</p>
+                        <p>В Оушен-Сити, единственном прибрежном сообществе Мэриленда, пляж является главной достопримечательностью. Прогуляйтесь по тротуару на трех милях вдоль набережной, отвечая на соленую воду и другие старомодные угощения. Летний сезон включает в себя специальные концерты, пляжные костры и детские мероприятия. Энтузиасты природы будут любить близлежащий остров Ассатеи, где живут олени и дикие пони. Когда-то маленькая рыбацкая деревня теперь пролегает на 10 миль, но рыболовы все еще стекаются в водные районы; он известен как Белая Марлинская столица мира. </p>
+                        <p>&nbsp;</p>
+
+                    </section>
+                    <section id="content">
+                        <h2>Отзывы</h2>
+                        <p class="subtitle">Отзывы исключительно наших клиентов, которые никто не имеет возможности удалять или редактировать</p>
+
+                        <table  width="200" style="word-wrap: break-word">
+                            <tr>
+                                <td><h2>Номер комментария</h2></td>
+                                <td><h2>Текст комментария</h2></td>
+                            </tr>
+                            <tr th:each="review : ${reviews}">
+                                <td
+                                        th:text="${review.id}">
+                                </td>
+                                <td width="50" style="word-wrap: break-word"
+                                        th:text="${review.text}">
+                                </td>
+                            </tr>
+                        </table>
+
+                        <form action="index" style="font-size: 120%; font-family: monospace" method="post" align="center">
+                            <p>&nbsp;</p>
+                            <p><h2>Ваш отзыв очень важен для нас:</h2></p>
+                            <p>&nbsp;</p>
+                            <p><textarea  rows="5" cols="45" name="text" maxlength="200"></textarea></p>
+                            <p><input class="review" type="submit" value="Отправить"></p>
+                        </form>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="12u">
+                <div class="row">
+                    <div id="splash"> <span>Добро пожаловать в нашу гостиницу</span> Здесь вы получите полный спектр услуг, который сделает ваш отдых незабываемым! </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="12u" id="gallery">
+                <div class="row">
+                    <div class="4u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="#"><img src="images/pool.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="4u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="#"><img src="images/Courtyard.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="4u">
+                        <section>
+                            <div>
+                                <div class="image-style1"><a href="#"><img src="images/car.jpg" alt=""></a></div>
+                                <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="5grid-layout">
+    <!--<div class="button"><form th:action="@{/logout}" method="post"><input type="submit" value="Sign Out"/></form></div>-->
+    <div id="copyright">
+        <section>
+            <p>&copy; Royale inn: <a target="_blank" href="https://vk.com/glytovphotography">nikitaglytovphoro</a> | Design: <a target="_blank" href="https://vk.com/rockstar2007">AndruwaRyliakou</a></p>
+        </section>
+    </div>
+</div>
+</body>
+</html>

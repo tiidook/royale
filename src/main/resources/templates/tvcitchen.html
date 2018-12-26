@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<title>Royale | Two Column 1</title>
+  <style>
+    input{
+      border-radius: 3px;
+      background-image:-moz-linear-gradient(top, #cfcfbf, #fffed7);
+    }
+  </style>
+<meta charset="utf-8">
+<noscript>
+<link rel="stylesheet" href="css/5grid/core.css">
+<link rel="stylesheet" href="css/5grid/core-desktop.css">
+<link rel="stylesheet" href="css/5grid/core-1200px.css">
+<link rel="stylesheet" href="css/5grid/core-noscript.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+</noscript>
+<script src="css/5grid/jquery.js"></script>
+<script src="css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css"><![endif]-->
+</head>
+<body class="two-column">
+<div id="header-wrapper">
+  <header id="header" class="5grid-layout">
+    <div class="row">
+      <div class="12u">
+        <!-- Logo -->
+        <h1><a href="/index" class="mobileUI-site-name">Royale</a></h1>
+
+        <!-- Nav -->
+        <nav class="mobileUI-site-nav"> <a href="/">Homepage</a> <a href="/doublebed">Doublebed</a> <a href="/tvcitchen" class="active">Citchen+TV</a> <a href="/twodoublebeds">Two doublebeds</a> <a href="/doublebedtv">Doublebed+TV</a> <a href="/personalpage">Кабинет</a></nav>
+      </div>
+    </div>
+  </header>
+</div>
+<div id="wrapper">
+  <div class="5grid-layout">
+    <div id="page">
+      <div class="row">
+        <div class="12u">
+          <div class="row">
+            <div class="8u">
+              <section id="content">
+                <h2>Citchen+TV</h2>
+                <p class="subtitle">Номер с максимальной степенью комфортности, в котором с комфортом размещаются 2 семьи</p>
+
+                <div class="alignleft">
+                  <div class="image-style1"><a href="#"><img src="images/129184376.jpg" width="262" height="180" alt=""></a></div>
+                  <div><a href="#"><img src="css/images/img02.png" width="262" height="30" alt=""></a></div>
+                </div>
+
+                <p>Забронировать</p>
+                <p>&nbsp;</p>
+                <p>Ввод в формате yyyy-mm-dd</p>
+                <form method="post" action="/tvcitchen" >
+                  <input type="date" name="checkin" placeholder="Введите дату заселения">
+                  <input type="date" name="checkout" placeholder="Введите дату выселения">
+                  <button type="submit">Забронировать</button>
+                </form>
+                <p>&nbsp;</p>
+                <h1 th:text="${mess}">Hello!</h1>
+                <p>Дополнительные сведения о заказе вы можете узнать в личном кабинете, оттуда же производится отмена заказа</p>
+                <p>&nbsp;</p>
+              </section>
+            </div>
+            <div class="4u">
+              <section id="sidebar">
+                <p class="subtitle">Все номера оснащены кондиционером</p>
+                <p>Номер с максимальным комфортом. В данном номере может с комфортом расположиться две семьи, для этого номер оснащен:</p>
+                  <ul class="list-style1">
+                  <li>2 Двуспальные кровати</li>
+                  <li>Микроволновка</li>
+                  <li>Холодильник</li>
+                  <li>Душ</li>
+                  <li>Туалет</li>
+                  <li>Wi-Fi</li>
+                    <li>Раскладной диван</li>
+                    <li>Кухня</li>
+                    <li>Телевизор</li>
+                    </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="5grid-layout">
+  <div id="copyright">
+    <section>
+      <p>&copy; Royale inn: <a target="_blank" href="https://vk.com/glytovphotography">nikitaglytovphoro</a> | Design: <a target="_blank" href="https://vk.com/rockstar2007">AndruwaRyliakou</a></p>
+    </section>
+  </div>
+</div>
+</body>
+</html>

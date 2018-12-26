@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<title>Royale inn.</title>
+  <style type="text/css">
+
+    input{
+      border-radius: 3px;
+      background-image:-moz-linear-gradient(top, #cfcfbf, #fffed7);
+    }
+
+    .send, .button, .delete{
+      display: inline-block;
+      color: rgb(255, 255, 239);
+      font-weight: 700;
+      text-decoration: none;
+      user-select: none ;
+      padding: .5em 2em;
+      outline: none;
+      border: 2px solid;
+      border-radius: 1px;
+      transition: 0.2s;
+    }
+    .send :hover { background: rgb(255, 254, 114); }
+    .send :active { background: brown; }
+
+
+    textarea{
+
+      box-sizing : border-box;
+      font: .9em/1.5em "Lucida Sans", sans-serif;
+      padding: 10px 30px 10px 30px;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 12pt;
+      text-shadow: -1px -1px 0 rgba(255, 255, 239, 0.5);
+    }
+
+    .input {
+      font: .9em/1.5em "Lucida Sans", sans-serif;
+      style = "color:#ff0000";
+      border: 4px double #444650;
+      padding: 10px 30px 10px 30px;
+      margin: 200;
+      width: 240px;
+      box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 239, 0.44), 0px 2px 3px 0px rgba(255, 254, 114, 0.25);
+      background-image: -moz-linear-gradient(top, #cfcfbf, #fffed7);
+      background-image: -webkit-linear-gradient(top, #ffffef, #fffed7);
+      background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c9bdc0), to(#fcfff6));
+      background-image: -ms-linear-gradient(top, #686E76, #cfcfbf);
+      background-image: -o-linear-gradient(top, #686E76, rgba(201, 189, 192, 0.35));
+      background-image: linear-gradient(top, #686E76, rgba(255, 254, 114, 0.27));
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 12pt;
+      background: FFFFEF;
+      color: rgb(68, 70, 80);
+      text-shadow: -1px -1px 0 rgba(255, 255, 239, 0.5);
+    }
+    table {
+      width: 200px;
+      padding: 10px; /* Поля */
+      font-size: 1.5em;
+      /* Ширина таблицы */
+      word-wrap : break-word;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+      border-collapse: collapse;
+      color: #686461;
+    }
+    caption {
+      padding: 10px;
+      color: white;
+      background: #8FD4C1;
+      font-size: 18px;
+      text-align: left;
+      font-weight: bold;
+    }
+    th {
+      word-wrap : break-word;
+      border-bottom: 3px solid #B9B29F;
+      padding: 10px;
+      text-align: left;
+    }
+    td {
+      word-wrap : break-word;
+      padding: 10px;
+    }
+    tr:nth-child(odd) {
+      word-wrap : break-word;
+    }
+    tr:nth-child(even) {
+      word-wrap : break-word;
+      background: #E8E6D1;
+
+    }
+    .field {clear:both; text-align:right; line-height:25px;}
+    label {float:left; padding-right:10px;}
+    .main {float:left}
+
+
+  </style>
+<meta charset="utf-8">
+<noscript>
+<link rel="stylesheet" href="css/5grid/core.css">
+<link rel="stylesheet" href="css/5grid/core-desktop.css">
+<link rel="stylesheet" href="css/5grid/core-1200px.css">
+<link rel="stylesheet" href="css/5grid/core-noscript.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+</noscript>
+<script src="css/5grid/jquery.js"></script>
+<script src="css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"></script>
+<!--[if IE 9]><link rel="stylesheet" href="css/style-ie9.css"><![endif]-->
+</head>
+<body class="two-column">
+<div id="header-wrapper">
+  <header id="header" class="5grid-layout">
+    <div class="row">
+      <div class="12u">
+        <!-- Logo -->
+        <nav class="mobileUI-site-nav"> <a href="/">Homepage</a> <a href="/doublebedtv">Doublebed+TV</a> <a href="/doublebed" class="active">Doublebed</a> <a href="/tvcitchen">Citchen+TV</a> <a href="/twodoublebeds">Two doublebeds</a> <a href="/personalpage">Кабинет</a></nav>
+        <h1 style="color:#ffffef" class="mobileUI-site-name" th:inline="text">Royale inn</h1>
+        <p><h1 th:text="${hello}">Здравствуйте!</h1></p>
+        <!-- Nav -->
+      </div>
+    </div>
+  </header>
+</div>
+<div id="wrapper">
+  <div class="5grid-layout">
+    <div id="page">
+      <div class="row">
+        <div class="12u">
+          <div class="row">
+            <div class="4u">
+              <section id="sidebar">
+                <h2>Список ваших заказов</h2>
+                <p class="subtitle">Редактирование невозможно</p>
+
+                <table style="word-wrap: break-word" width="200">
+                  <tr>
+                    <td>Номер заказа</td>
+                    <td>Дата заселения</td>
+                    <td>Дата выселения</td>
+
+                  </tr>
+                  <tr th:each="order : ${orders}">
+                    <td width="100"
+                        th:text="${order.id}">
+                    </td>
+                    <td width="100"
+                            th:text="${order.checkin}">
+                    </td>
+                    <td width="100"
+                            th:text="${order.checkout}">
+                    </td>
+
+
+                  </tr>
+                </table>
+
+                <p class="subtitle"  th:text="${mess}"></p>
+                <p>&nbsp;</p>
+                <form method="post" action="delorder">
+                  <input type="text" name="delorder" placeholder="Номер заказа">
+                  <button class="delete" type="submit">Удалить</button>
+                </form>
+                <p>&nbsp;</p>
+              </section>
+              <section id="sidebar">
+                <h2>Список ваших отзывов</h2>
+                <p class="subtitle">Редактирование отзыва невозможно</p>
+
+                <table width="100">
+                  <tr>
+                    <td>Номер комментария</td>
+                    <td>Текст комментария</td>
+                  </tr>
+                  <tr th:each="review : ${reviews}">
+                    <td
+                            th:text="${review.id}">
+                    </td>
+                    <td
+                            th:text="${review.text}">
+                    </td>
+                  </tr>
+                </table>
+                <p class="subtitle"  th:text="${messaga}"></p>
+                <p>&nbsp;</p>
+              </section>
+            </div>
+
+
+
+            <div class="8u mobileUI-main-content" th:inline="text">
+              <section id="content">
+                <h2 th:inline="text">Здравствуйте [[${#httpServletRequest.remoteUser}]]!</h2>
+                <p class="subtitle">Здесь вы можете редактировать свои данные</p>
+                <p>&nbsp;</p>
+                <table width="200">
+                  <tr>
+                    <td>ФИО</td>
+                    <td>Логин</td>
+                    <td>Пароль</td>
+                    <td>Email</td>
+                    <td>Телефон</td>
+                  </tr>
+                  <tr th:each="cl : ${client}">
+                    <td
+                            th:text="${cl.fio}">
+                    </td>
+                    <td
+                            th:text="${cl.login}">
+                    </td>
+                    <td
+                            th:text="${cl.pass}">
+                    </td>
+                    <td
+                            th:text="${cl.email}">
+                    </td>
+                    <td
+                            th:text="${cl.phone}">
+                    </td>
+                  </tr>
+                </table>
+                <p>&nbsp;</p>
+                <form method="post" action="/personalpage" style="margin: 0px auto; text-align: left;">
+                  <input type="text" th:value="${fio}"  name="fio" placeholder="ФИО">
+                  <input type="text" th:value="${login}" name="login" placeholder="Логин">
+                  <input type="text" th:value="${pass}" name="pass" placeholder="Пароль">
+                  <input type="text"  th:value="${email}" name="email" placeholder="Email" >
+                  <input type="text" th:value="${phone}" name="phone" placeholder="Телефон">
+                  <button class="button" type="submit">Редактировать</button>
+                </form>
+                <p>&nbsp;</p>
+                <div class="block1">
+                <form action="/addcomment" method="post" align="center">
+                  <p>&nbsp;</p>
+                  <p><h1>Вы можете отправить пожелание администрации с указанием комнаты:</h1></p>
+                  <p>&nbsp;</p>
+                  <p><textarea rows="5" cols="45" name="comment" maxlength="200"></textarea></p>
+                  <p><input class="send" type="submit" value="Отправить"></p>
+                </form>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="5grid-layout">
+  <div id="copyright">
+    <section>
+      <p>&copy; Royale inn: <a target="_blank" href="https://vk.com/glytovphotography">nikitaglytovphoro</a> | Design: <a target="_blank" href="https://vk.com/rockstar2007">AndruwaRyliakou</a></p>
+    </section>
+  </div>
+</div>
+</body>
+</html>
