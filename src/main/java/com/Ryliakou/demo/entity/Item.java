@@ -1,4 +1,4 @@
-package com.arkhipenka.demo.entity;
+package com.Ryliakou.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

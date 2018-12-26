@@ -1,4 +1,4 @@
-package com.arkhipenka.demo.entity;
+package com.Ryliakou.demo.entity;
 
 import javax.persistence.*;
 

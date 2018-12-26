@@ -1,7 +1,7 @@
-package com.arkhipenka.demo.service;
+package com.Ryliakou.demo.service;
 
-import com.arkhipenka.demo.entity.Item;
-import com.arkhipenka.demo.repository.ItemRepository;
+import com.Ryliakou.demo.entity.Item;
+import com.Ryliakou.demo.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +16,5 @@ public class ItemService {
     public List<Item> getAllItems(){
         return itemRepository.findAll();
     }
+
 }
